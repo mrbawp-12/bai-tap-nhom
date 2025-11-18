@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Tin tức & khuyến mãi - Nội Thất TrippaD">
+  <link rel="icon" href="imgs/favicon.png" type="image/png">
+  <title>Tin tức - Nội Thất TrippaD</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="main-wrapper">
+    <header class="site-header">
+      <div class="brand">
+        <a href="index.html" style="text-decoration: none; color: inherit;">
+          <h1>Nội Thất TrippaD</h1>
+        </a>
+        <p class="tagline">Tin tức & Khuyến mãi</p>
+      </div>
+      <div class="header-right">
+        <a href="index.html" class="btn">⟵ Trang chủ</a>
+      </div>
+    </header>
+
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">🏢 Thương hiệu ▾</a>
+          <div class="dropdown-content">
+            <a href="about.html">🎯 Tổng quan công ty</a>
+            <a href="about.html#reasons">💡 Lý do chọn chúng tôi</a>
+            <a href="about.html#partners">🤝 Đối tác & Khách hàng</a>
+            <a href="about.html#development">🚀 Hành trình phát triển</a>
+          </div>
+        </li>
+        <li><a href="news.html" class="active">Tin tức</a></li>
+        <li><a href="contact.html">Liên hệ</a></li>
+      </ul>
+    </nav>
+
+    <main class="news-section">
+      <h2 class="section-title">Tin tức & Khuyến mãi mới nhất</h2>
+      <div class="news-tools">
+        <div class="tabs" id="tabs">
+          <button class="tab-btn active" data-type="all">Tất cả</button>
+          <button class="tab-btn" data-type="Khuyến mãi">Khuyến mãi</button>
+          <button class="tab-btn" data-type="Tuyển dụng">Tuyển dụng</button>
+          <button class="tab-btn" data-type="Hoạt động công ty">Hoạt động công ty</button>
+        </div>
+        <div style="margin-left:auto;">
+          <a href="admin.html" class="btn btn-primary">Quản trị tin</a>
+        </div>
+      </div>
+      <section id="newsWrap"></section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div>
+          <h3>Nội Thất TrippaD</h3>
+          <p>Địa chỉ: 73/110 Trần Duy Hưng, Cầu Giấy, Hà Nội</p>
+        </div>
+        <div>
+          <p>&copy; 2025 Nội Thất TrippaD</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'newsPosts_v1';
+    const newsWrap = document.getElementById('newsWrap');
+
+    function loadPosts() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : samplePosts;
+    }
+
+    function formatDate(iso) {
+      try {
+        const date = new Date(iso);
+        return date.toLocaleDateString('vi-VN', {
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric'
+        });
+      } catch {
+        return '';
+      }
+    }
+
+    function render(type = 'all') {
+      const posts = loadPosts();
+      let filtered = posts;
+      if (type !== 'all') filtered = posts.filter(p => p.type === type);
+      filtered = filtered.slice().reverse();
+
+      if (!filtered.length) {
+        newsWrap.innerHTML = `
+          <div class='empty-note'>
+            <div class='icon'>📰</div>
+            <h3>Chưa có bài viết nào</h3>
+            <p>Hiện chưa có bài nào trong mục "${type === 'all' ? 'Tất cả' : type}".</p>
+            <a href='admin.html' class='btn btn-primary'>Thêm bài viết mới</a>
+          </div>
+        `;
+        return;
+      }
+
+      // Create featured section for the first post when viewing all
+      let featuredHTML = '';
+      if (type === 'all' && filtered.length > 0) {
+        const featuredPost = filtered[0];
+        featuredHTML = `
+          <div class="featured-news">
+            <div class="main-featured">
+              <img src="${featuredPost.image || 'imgs/promo-sample.jpg'}" alt="${escapeHtml(featuredPost.title)}">
+              <div class="main-featured-content">
+                <span class="news-type">${escapeHtml(featuredPost.type)}</span>
+                <h2>${escapeHtml(featuredPost.title)}</h2>
+                <p>${escapeHtml(featuredPost.desc)}</p>
+                <a href="#" class="news-read-more">Đọc thêm</a>
+              </div>
+            </div>
+            <div class="side-featured">
+              ${filtered.slice(1, 3).map(post => `
+                <article class="news-card">
+                  <img src="${post.image || 'imgs/promo-sample.jpg'}" alt="${escapeHtml(post.title)}">
+                  <div class="news-card-content">
+                    <div class="news-meta">
+                      <span class="news-type">${escapeHtml(post.type)}</span>
+                      <span class="news-date">${formatDate(post.date)}</span>
+                    </div>
+                    <h3>${escapeHtml(post.title)}</h3>
+                    <p>${escapeHtml(post.desc)}</p>
+                    <a href="#" class="news-read-more">Đọc thêm</a>
+                  </div>
+                </article>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      // Create grid for remaining posts
+      const startIndex = type === 'all' ? 3 : 0;
+      const gridPosts = filtered.slice(startIndex);
+
+      const gridHTML = gridPosts.length > 0 ? `
+        <div class="news-grid">
+          ${gridPosts.map(post => `
+            <article class="news-card">
+              <img src="${post.image || 'imgs/promo-sample.jpg'}" alt="${escapeHtml(post.title)}">
+              <div class="news-card-content">
+                <div class="news-meta">
+                  <span class="news-type">${escapeHtml(post.type)}</span>
+                  <span class="news-date">${formatDate(post.date)}</span>
+                </div>
+                <h3>${escapeHtml(post.title)}</h3>
+                <p>${escapeHtml(post.desc)}</p>
+                <a href="#" class="news-read-more">Đọc thêm</a>
+              </div>
+            </article>
+          `).join('')}
+        </div>
+      ` : '';
+
+      newsWrap.innerHTML = featuredHTML + gridHTML;
+    }
+
+    function escapeHtml(s) {
+      if (!s) return '';
+      return s.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+    }
+
+    // Initialize tabs
+    document.getElementById('tabs').addEventListener('click', e => {
+      const btn = e.target.closest('button');
+      if (!btn) return;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      render(btn.dataset.type);
+    });
+
+    // Initial render
+    render('all');
+  </script>
+  <script src="script.js"></script>
+
+  <div class="floating-contact">
+    <div class="contact-icons" id="contactIcons">
+      <a href="https://zalo.me/your-zalo-number" class="contact-icon zalo" data-tooltip="Chat Zalo" target="_blank">
+        <span>Z</span>
+      </a>
+      <a href="https://m.me/your-messenger-id" class="contact-icon messenger" data-tooltip="Messenger" target="_blank">
+        <span>M</span>
+      </a>
+      <a href="tel:your-phone-number" class="contact-icon phone" data-tooltip="Gọi ngay">
+        <span>📞</span>
+      </a>
+    </div>
+    <button class="contact-trigger" id="contactTrigger">
+      <span>💬</span>
+    </button>
+  </div>
+</body>
+
+</html>

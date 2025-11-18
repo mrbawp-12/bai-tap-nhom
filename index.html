@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Nội Thất TrippaD - Nội thất hiện đại, tiện nghi. Sofa, bàn, ghế, giường và nhiều lựa chọn cho gia đình bạn." />
+  <link rel="icon" href="imgs/favicon.png" type="image/png">
+  <title>Nội Thất TrippaD</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="main-wrapper">
+    <!-- Header -->
+    <header class="site-header">
+      <div class="brand">
+        <h1>Nội Thất TrippaD</h1>
+        <p class="tagline">Mang không gian sống hiện đại và tiện nghi đến ngôi nhà của bạn.</p>
+      </div>
+
+      <div class="header-right">
+        <section class="user-auth">
+          <button id="loginBtn" class="btn">🔑 Đăng nhập</button>
+        </section>
+
+        <section class="cart">
+          <button id="cartBtn" class="btn">🛒 Giỏ (<span id="cartCount">0</span>)</button>
+        </section>
+      </div>
+    </header>
+
+    <!-- Navbar -->
+    <nav class="main-nav">
+      <ul>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">📋 Danh mục sản phẩm ▾</a>
+          <div class="dropdown-content">
+            <a href="#" data-category="Bàn">🪵 Bàn</a>
+            <a href="#" data-category="Ghế">🪑 Ghế</a>
+            <a href="#" data-category="Tủ">🗄️ Tủ</a>
+            <a href="#" data-category="Giường">🛏️ Giường</a>
+            <a href="#" data-category="Kệ">📚 Kệ</a>
+          </div>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropbtn">🏢 Thương hiệu ▾</a>
+          <div class="dropdown-content">
+            <a href="about.html">🎯 Tổng quan công ty</a>
+            <a href="about.html#reasons">💡 Lý do chọn chúng tôi</a>
+            <a href="about.html#partners">🤝 Đối tác & Khách hàng</a>
+            <a href="about.html#development">🚀 Hành trình phát triển</a>
+          </div>
+        </li>
+
+        <li><a href="news.html">Tin tức</a></li>
+        <li><a href="contact.html">Liên hệ</a></li>
+      </ul>
+    </nav>
+
+    <!-- Banner Slider -->
+    <section class="hero">
+      <div class="slider" id="slider">
+        <div class="slides">
+          <div class="slide"><img src="imgs/sofa-hien-dai-hns105-1.jpg" alt="Sofa hiện đại - Nội Thất TrippaD"></div>
+          <div class="slide"><img src="imgs/ban-ghe-phong-khach-hien-dai23232332_7.jpg" alt="Bộ bàn ghế phòng khách"></div>
+          <div class="slide"><img src="imgs/TQA15.jpg" alt="Tủ quần áo hiện đại"></div>
+          <div class="slide"><img src="imgs/43_b18264c0d7324733940ab72387b35b94_grande.jpg" alt="Giường đơn gỗ hương"></div>
+          <div class="slide"><img src="imgs/Ke-sach-go-soi-da-nang-kieu-don-gian1.jpg" alt="Kệ sách gỗ sồi"></div>
+
+        </div>
+        <button class="prev" id="prevBtn" aria-label="Prev">⟵</button>
+        <button class="next" id="nextBtn" aria-label="Next">⟶</button>
+        <div class="dots" id="dots"></div>
+      </div>
+    </section>
+
+    <!-- Promotion Banner -->
+    <section class="promotion-banner">
+      <div class="banner-content">
+        <h3>🎊 Khai trương showroom mới</h3>
+        <p>Ưu đãi lên đến 30% cho khách hàng đầu tiên</p>
+        <a href="news.html" class="btn btn-primary">Xem ngay</a>
+      </div>
+    </section>
+
+    <!-- Phân loại sản phẩm & Bán chạy -->
+    <section class="categories-section">
+      <div class="container">
+        <!-- Danh mục sản phẩm -->
+        <div class="categories-header">
+          <h2>🛍️ Danh mục sản phẩm</h2>
+          <p>Khám phá các loại nội thất chất lượng cao</p>
+        </div>
+
+        <div class="categories-grid">
+          <div class="category-card" data-category="Bàn">
+            <div class="category-icon">🪵</div>
+            <h3>Bàn</h3>
+            <p>15 sản phẩm</p>
+          </div>
+
+          <div class="category-card" data-category="Ghế">
+            <div class="category-icon">🪑</div>
+            <h3>Ghế</h3>
+            <p>15 sản phẩm</p>
+          </div>
+
+          <div class="category-card" data-category="Tủ">
+            <div class="category-icon">🗄️</div>
+            <h3>Tủ</h3>
+            <p>10 sản phẩm</p>
+          </div>
+
+          <div class="category-card" data-category="Giường">
+            <div class="category-icon">🛏️</div>
+            <h3>Giường</h3>
+            <p>5 sản phẩm</p>
+          </div>
+
+          <div class="category-card" data-category="Kệ">
+            <div class="category-icon">📚</div>
+            <h3>Kệ</h3>
+            <p>5 sản phẩm</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sản phẩm bán chạy -->
+    <section class="featured-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>🔥 Sản phẩm bán chạy</h2>
+          <p>Những sản phẩm được yêu thích nhất</p>
+          <button class="btn view-all-btn" onclick="app.scrollToAllProducts()">Xem tất cả</button>
+        </div>
+
+        <div class="featured-products" id="featuredProducts">
+          <!-- Sản phẩm bán chạy sẽ được hiển thị here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Tất cả sản phẩm -->
+    <section class="all-products-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>📦 Tất cả sản phẩm</h2>
+          <p>Khám phá toàn bộ bộ sưu tập nội thất</p>
+        </div>
+
+        <!-- Bộ lọc -->
+        <section class="filters" aria-label="Bộ lọc sản phẩm">
+          <input type="text" id="searchInput" placeholder="Tìm sản phẩm nội thất...">
+
+          <select id="categoryFilter">
+            <option value="all">Tất cả loại sản phẩm</option>
+            <option value="Bàn">Bàn</option>
+            <option value="Ghế">Ghế</option>
+            <option value="Tủ">Tủ</option>
+            <option value="Giường">Giường</option>
+            <option value="Kệ">Kệ</option>
+          </select>
+
+          <select id="materialFilter">
+            <option value="all">Tất cả chất liệu</option>
+            <option value="Gỗ">Gỗ</option>
+            <option value="Nhựa">Nhựa</option>
+            <option value="Vải">Vải</option>
+            <option value="Kính">Kính</option>
+            <option value="Da">Da</option>
+            <option value="Kim loại">Kim loại</option>
+          </select>
+
+          <select id="colorFilter">
+            <option value="all">Tất cả màu sắc</option>
+            <option value="Nâu">Nâu</option>
+            <option value="Trắng">Trắng</option>
+            <option value="Đen">Đen</option>
+            <option value="Xám">Xám</option>
+          </select>
+        </section>
+
+        <!-- Danh sách sản phẩm -->
+        <section class="products" id="productList" aria-live="polite"></section>
+
+        <!-- Phân trang -->
+        <section class="pagination-section" id="paginationSection" style="display: none;">
+          <div class="pagination">
+            <button id="prevPage" class="page-btn" disabled>
+              ‹‹ Trước
+            </button>
+
+            <div class="page-numbers" id="pageNumbers">
+              <!-- Các số trang sẽ được tạo bằng JavaScript -->
+            </div>
+
+            <button id="nextPage" class="page-btn">
+              Sau ››
+            </button>
+          </div>
+
+          <div class="pagination-info">
+            Hiển thị <span id="currentRange">0-0</span> của <span id="totalProducts">0</span> sản phẩm
+          </div>
+        </section>
+      </div>
+    </section>
+  </div>
+
+  <!-- Modal Giỏ hàng -->
+  <div id="cartModal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button id="closeCart" class="close-x" aria-label="Đóng">✕</button>
+      <h2>Giỏ hàng của bạn</h2>
+      <div id="cartItems" style="max-height: 400px; overflow-y: auto; margin: 1rem 0;"></div>
+      <p class="cart-total">Tổng cộng: <span id="cartTotal">0</span> VND</p>
+      <div class="cart-actions">
+        <button id="clearCart" class="btn btn-danger">Xóa giỏ hàng</button>
+        <button id="checkoutBtn" class="btn btn-primary">Mua hàng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Chi tiết sản phẩm -->
+  <div id="productModal" class="modal" aria-hidden="true">
+    <div class="modal-content" style="max-width: 1000px;">
+      <button id="closeProductModal" class="close-x" aria-label="Đóng">✕</button>
+      <div class="product-modal-content">
+        <div class="product-modal-left">
+          <img id="modalProductImg" src="" alt="Sản phẩm" class="main-img">
+          <div class="thumbnails" id="productThumbnails">
+            <!-- Thumbnails will be generated by JavaScript -->
+          </div>
+        </div>
+
+        <div class="product-modal-right">
+          <div>
+            <h2 id="modalProductName" style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--text-dark);"></h2>
+            <p id="modalProductPrice" class="product-price" style="margin-bottom: 1rem;"></p>
+            <div class="product-meta">
+              <div class="meta-item">
+                <span>⭐ 4.9/5</span>
+              </div>
+              <div class="meta-item">
+                <span>📦 Còn hàng</span>
+              </div>
+              <div class="meta-item">
+                <span>🛒 125 đã bán</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-specs">
+            <h4>📋 Thông số kỹ thuật</h4>
+            <ul class="specs-list" id="modalProductSpecs">
+              <!-- Specs will be filled by JavaScript -->
+            </ul>
+          </div>
+
+          <div class="product-description">
+            <h4 style="margin-bottom: 1rem; color: var(--primary);">📝 Mô tả sản phẩm</h4>
+            <p id="modalProductDesc"></p>
+            <div class="features-grid">
+              <div class="feature-item">
+                <span>✅</span> Bảo hành 24 tháng
+              </div>
+              <div class="feature-item">
+                <span>✅</span> Giao hàng miễn phí
+              </div>
+              <div class="feature-item">
+                <span>✅</span> Lắp đặt chuyên nghiệp
+              </div>
+              <div class="feature-item">
+                <span>✅</span> Đổi trả trong 30 ngày
+              </div>
+            </div>
+          </div>
+
+          <div class="quantity-selector">
+            <label style="font-weight: 600; color: var(--text-dark);">Số lượng:</label>
+            <button class="quantity-btn minus">-</button>
+            <input type="number" class="quantity-input" id="productQuantity" value="1" min="1" max="10">
+            <button class="quantity-btn plus">+</button>
+          </div>
+
+          <div class="product-modal-actions">
+            <button id="modalAddToCart" class="btn btn-primary" style="flex: 2;">
+              🛒 Thêm vào giỏ hàng
+            </button>
+            <button id="buyNowBtn" class="btn" style="flex: 1; background: var(--secondary); color: white;">
+              💳 Mua ngay
+            </button>
+            <button id="closeProductModalBtn" class="btn"
+              style="flex: 1; background: transparent; color: var(--primary); border: 2px solid var(--primary);">
+              ↩️ Quay lại
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Tài khoản -->
+  <div id="accountModal" class="modal" aria-hidden="true">
+    <div class="modal-content" style="max-width: 900px; max-height: 90vh;">
+      <button id="closeAccount" class="close-x" aria-label="Đóng">✕</button>
+
+      <!-- Header tài khoản (chỉ hiện khi đã đăng nhập) -->
+      <div id="accountHeader" style="display: none;">
+        <div
+          style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: white; border-radius: 12px;">
+          <div
+            style="width: 60px; height: 60px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+            👤
+          </div>
+          <div>
+            <h3 id="accountUsername" style="margin: 0; font-size: 1.3rem;"></h3>
+            <p style="margin: 0.3rem 0 0 0; opacity: 0.9;">Thành viên chính thức</p>
+          </div>
+
+          <!-- Edit profile buttons (inline header) -->
+          <div style="margin-left: auto; display:flex; gap:0.5rem; align-items:center;">
+            <button id="editProfileBtnInline" class="btn" title="Chỉnh sửa hồ sơ" style="background: rgba(255,255,255,0.12); color: white; border: 1px solid rgba(255,255,255,0.2);">✏️ Chỉnh sửa</button>
+            <button id="logoutBtn" class="btn"
+              style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3);">Đăng
+              xuất</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form đăng nhập/đăng ký (hiện khi chưa đăng nhập) -->
+      <div id="authSection">
+        <h2 id="authTitle">Đăng nhập</h2>
+        <form id="authForm" style="display:flex;flex-direction:column;gap:1rem;">
+          <input id="authUsername" type="text" placeholder="Tên đăng nhập" required>
+          <input id="authPassword" type="password" placeholder="Mật khẩu" required>
+          <button id="authSubmit" class="btn btn-primary">Đăng nhập</button>
+          <p id="toggleAuth" style="text-align:center;">
+            Chưa có tài khoản? <a href="#">Đăng ký ngay</a>
+          </p>
+        </form>
+      </div>
+
+      <!-- Menu tài khoản (hiển thị khi đã đăng nhập) -->
+      <div id="accountMenu" style="display: none;">
+        <!-- Thống kê nhanh -->
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 2rem 0;">
+          <div class="stat-card" data-status="all">
+            <div class="stat-number">0</div>
+            <div class="stat-label">Tất cả</div>
+          </div>
+          <div class="stat-card" data-status="pending">
+            <div class="stat-number">0</div>
+            <div class="stat-label">Chờ xác nhận</div>
+          </div>
+          <div class="stat-card" data-status="shipping">
+            <div class="stat-number">0</div>
+            <div class="stat-label">Đang giao</div>
+          </div>
+          <div class="stat-card" data-status="completed">
+            <div class="stat-number">0</div>
+            <div class="stat-label">Đã giao</div>
+          </div>
+        </div>
+
+        <!-- Tab menu -->
+        <div class="account-tabs">
+          <button class="tab-btn active" data-tab="orders">📦 Đơn hàng của tôi</button>
+          <button class="tab-btn" data-tab="profile">👤 Thông tin tài khoản</button>
+        </div>
+
+        <!-- Nội dung tab -->
+        <div class="tab-content">
+          <!-- Tab đơn hàng -->
+          <div id="ordersTab" class="tab-pane active">
+            <div class="orders-filter">
+              <button class="filter-btn active" data-status="all">Tất cả</button>
+              <button class="filter-btn" data-status="pending">Chờ xác nhận</button>
+              <button class="filter-btn" data-status="confirmed">Đã xác nhận</button>
+              <button class="filter-btn" data-status="shipping">Đang giao</button>
+              <button class="filter-btn" data-status="completed">Đã giao</button>
+              <button class="filter-btn" data-status="cancelled">Đã huỷ</button>
+            </div>
+
+            <div id="ordersList" class="orders-list">
+              <!-- Danh sách đơn hàng sẽ được hiển thị here -->
+            </div>
+          </div>
+
+          <!-- Tab thông tin -->
+          <div id="profileTab" class="tab-pane">
+            <div class="profile-info">
+              <h3>Thông tin tài khoản</h3>
+              <div class="info-item">
+                <label>Tên đăng nhập:</label>
+                <span id="profileUsername"></span>
+              </div>
+              <div class="info-item">
+                <label>Ngày tham gia:</label>
+                <span id="profileJoinDate"></span>
+              </div>
+              <div class="info-item">
+                <label>Tổng đơn hàng:</label>
+                <span id="profileTotalOrders">0 đơn</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROFILE EDITOR (hidden by default) -->
+      <div id="profileEditor" style="display:none; margin-top:1.5rem;">
+        <h3>Chỉnh sửa hồ sơ</h3>
+        <div style="display:flex; gap:1.5rem; align-items:flex-start; margin-top:1rem;">
+          <div style="width:140px; text-align:center;">
+            <div id="editAvatarPreviewFallback" style="width:120px; height:120px; border-radius:50%; background:#f3f3f3; display:flex; align-items:center; justify-content:center; color:#666; font-size:32px; margin:0 auto;">👤</div>
+            <img id="editAvatarPreview" src="" alt="avatar preview" style="width:120px; height:120px; border-radius:50%; display:none; object-fit:cover; margin:0 auto;">
+            <div style="margin-top:0.5rem;">
+              <input id="editAvatarFile" type="file" accept="image/*">
+            </div>
+            <div style="margin-top:0.5rem;">
+              <input id="editAvatarUrl" type="url" placeholder="Hoặc dán URL ảnh" style="width:100%;">
+            </div>
+          </div>
+
+          <div style="flex:1;">
+            <label style="font-weight:600;">Tên hiển thị</label>
+            <input id="editDisplayName" type="text" placeholder="Tên hiển thị" style="width:100%; padding:0.5rem; margin-top:0.5rem;">
+            <p style="color:#666; margin-top:0.5rem; font-size:0.9rem;">Bạn có thể thay đổi tên hiển thị và ảnh đại diện ở đây.</p>
+
+            <div style="margin-top:1rem; display:flex; gap:0.5rem;">
+              <button id="saveProfileBtn" class="btn btn-primary">Lưu</button>
+              <button id="cancelEditProfileBtn" class="btn">Huỷ</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Thanh toán -->
+  <div id="checkoutModal" class="modal" aria-hidden="true">
+    <div class="modal-content" style="max-width: 500px;">
+      <button id="closeCheckout" class="close-x" aria-label="Đóng">✕</button>
+      <h2>Thông tin thanh toán</h2>
+      <form id="checkoutForm" style="display:flex;flex-direction:column;gap:1rem;">
+        <input id="buyerName" type="text" placeholder="Họ và tên" required>
+        <input id="buyerPhone" type="text" placeholder="Số điện thoại" required>
+        <textarea id="buyerAddress" placeholder="Địa chỉ giao hàng" required></textarea>
+        <button type="submit" class="btn btn-primary">Xác nhận mua hàng</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Chi tiết đơn hàng -->
+  <div id="orderDetailsModal" class="modal" aria-hidden="true">
+    <div class="modal-content" style="max-width: 700px; max-height: 90vh;">
+      <button id="closeOrderDetails" class="close-x" aria-label="Đóng">✕</button>
+
+      <h2>📋 Chi tiết đơn hàng</h2>
+
+      <div id="orderDetailsContent">
+        <!-- Nội dung chi tiết đơn hàng sẽ được hiển thị here -->
+      </div>
+
+      <div class="modal-actions" style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: flex-end;">
+        <button id="closeOrderDetailsBtn" class="btn">Đóng</button>
+      </div>
+    </div>
+  </div>  
+
+  <!-- Thêm các section mới -->
+
+  <!-- Statistics Section -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">1000+</div>
+          <div class="stat-label">Khách hàng hài lòng</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">5000+</div>
+          <div class="stat-label">Sản phẩm đã bán</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Năm kinh nghiệm</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Đối tác tin cậy</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 3rem;">Khách hàng nói gì về chúng tôi</h2>
+      <div class="testimonials-grid"
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        <div class="testimonial-card">
+          <p>"Sản phẩm chất lượng tuyệt vời, dịch vụ chuyên nghiệp. Tôi rất hài lòng với trải nghiệm mua sắm tại đây!"
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">CA</div>
+            <div> 
+              <div style="font-weight: 600;">Chị Anh</div>
+              <div style="color: var(--text-light); font-size: 0.9rem;">Khách hàng thân thiết</div>
+            </div>
+          </div>
+        </div>
+        <!-- Thêm more testimonials -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Subscription -->
+  <section style="background: var(--gradient-primary); color: white; padding: 4rem 0;">
+    <div class="container" style="text-align: center;">
+      <h2 style="margin-bottom: 1rem;">Đăng ký nhận tin</h2>
+      <p style="margin-bottom: 2rem; opacity: 0.9;">Nhận thông tin khuyến mãi và sản phẩm mới nhất</p>
+      <form class="newsletter-form" style="max-width: 400px; margin: 0 auto;">
+        <div style="display: flex; gap: 1rem;">
+          <input type="email" placeholder="Email của bạn" required
+            style="flex: 1; padding: 1rem; border: none; border-radius: 8px;">
+          <button type="submit" class="btn-premium" style="white-space: nowrap;">Đăng ký</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <h3>Nội Thất TrippaD</h3>
+        <p>Địa chỉ: Tòa OCT2 Xuân Phương Viglacera, Xuân Phương, Nam Từ Liêm, thành phố Hà Nội</p>
+      </div>
+      <div>
+        <p>&copy; 2025 Nội Thất TrippaD. Tất cả quyền được bảo lưu.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Chat Widget -->
+  <div id="chatWidget" class="chat-widget">
+    <div class="chat-header" id="chatHeader">
+      <div class="chat-header-info">
+        <div class="chat-avatar">🦌</div>
+        <div>
+          <h3>Hỗ trợ TrippaD</h3>
+          <div class="chat-status">🟢 Đang trực tuyến</div>
+        </div>
+      </div>
+      <div class="chat-controls">
+        <button class="chat-minimize-btn" id="minimizeChat" title="Thu nhỏ">−</button>
+        <button class="chat-close" id="closeChat" title="Đóng">✕</button>
+      </div>
+    </div>
+
+    <div class="chat-messages" id="chatMessages">
+      <div class="message received">
+        <div>Xin chào! Tôi có thể giúp gì cho bạn?</div>
+        <div class="message-time">Vừa xong</div>
+      </div>
+    </div>
+
+    <div class="chat-typing" id="chatTyping">
+      Hỗ trợ viên đang soạn tin nhắn...
+    </div>
+
+    <div class="chat-input-area">
+      <textarea class="chat-input" id="chatInput" placeholder="Nhập tin nhắn của bạn..." rows="1"></textarea>
+      <button class="chat-send" id="sendMessage">➤</button>
+    </div>
+  </div>
+
+  <!-- Minimized Chat Button -->
+  <button id="chatMinimized" class="chat-minimized" style="display: none;" title="Mở chat hỗ trợ">
+    💬
+    <div class="notification-badge" id="chatNotification" style="display: none;">1</div>
+  </button>
+
+  <!-- Floating Contact Icons -->
+  <div class="floating-contact">
+    <div class="contact-icons" id="contactIcons">
+      <a href="https://zalo.me/your-zalo-number" class="contact-icon zalo" data-tooltip="Chat Zalo" target="_blank">
+        <span>Z</span>
+      </a>
+      <a href="https://m.me/your-messenger-id" class="contact-icon messenger" data-tooltip="Messenger" target="_blank">
+        <span>M</span>
+      </a>
+      <a href="tel:your-phone-number" class="contact-icon phone" data-tooltip="Gọi ngay">
+        <span>📞</span>
+      </a>
+    </div>
+    <button class="contact-trigger" id="contactTrigger">
+      <span>💬</span>
+    </button>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toastContainer"></div>
+
+  <script src="script.js"></script>
+  <!-- Debug Panel -->
+  <div id="debugPanel"
+    style="position:fixed; bottom:10px; left:10px; background:rgba(0,0,0,0.8); color:white; padding:10px; border-radius:5px; z-index:9999; font-size:12px; display:none;">
+    <div>Debug Info:</div>
+    <div id="debugInfo"></div>
+  </div>
+
+  <script>
+    // Debug functions
+    function showDebug(info) {
+      const panel = document.getElementById('debugPanel');
+      const infoDiv = document.getElementById('debugInfo');
+      if (panel && infoDiv) {
+        panel.style.display = 'block';
+        infoDiv.textContent = info;
+        console.log('DEBUG:', info);
+      }
+    }
+
+    // Test click events
+    document.addEventListener('click', function (e) {
+      showDebug(`Clicked: ${e.target.tagName} ${e.target.className || e.target.id}`);
+    });
+
+    // Test category clicks
+    document.querySelectorAll('.category-card').forEach((card, index) => {
+      card.addEventListener('click', function () {
+        showDebug(`Category clicked: ${this.dataset.category}`);
+      });
+    });
+
+    // Test login button
+    document.getElementById('loginBtn')?.addEventListener('click', function () {
+      showDebug('Login button clicked');
+    });
+  </script>
+</body>
+
+</html>

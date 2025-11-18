@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="description" content="Chi tiết tin tức - Nội Thất TrippaD">
+  <link rel="icon" href="imgs/favicon.png" type="image/png">
+  <title>Chi tiết tin tức - Nội Thất TrippaD</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="main-wrapper">
+    <header class="site-header">
+      <div class="brand">
+        <h1>Nội Thất TrippaD</h1>
+        <p class="tagline">Tin tức chi tiết</p>
+      </div>
+      <div class="header-right">
+        <a href="news.html" class="btn">⟵ Quay lại Tin tức</a>
+      </div>
+    </header>
+
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><a href="news.html">Tin tức</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">🏢 Thương hiệu ▾</a>
+          <div class="dropdown-content">
+            <a href="about.html">🎯 Tổng quan công ty</a>
+            <a href="about.html#reasons">💡 Lý do chọn chúng tôi</a>
+            <a href="about.html#partners">🤝 Đối tác & Khách hàng</a>
+            <a href="about.html#development">🚀 Hành trình phát triển</a>
+          </div>
+        </li>
+        <li><a href="contact.html">Liên hệ</a></li>
+      </ul>
+    </nav>
+
+    <main class="content-wrap" style="max-width:900px;margin:auto;padding:2rem;">
+      <article id="newsDetail">
+        <img id="detailImg" src="imgs/promo-sample.jpg" alt="Bài viết"
+          style="width:100%;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+        <h2 id="detailTitle" style="margin-top:1rem;color:#5d4037;"></h2>
+        <p class="muted" id="detailMeta"></p>
+        <div id="detailContent" style="margin-top:1rem;line-height:1.7;"></div>
+      </article>
+
+      <div style="margin-top:3rem;">
+        <a href="news.html" class="btn">← Quay lại danh sách tin</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div>
+          <h3>Nội Thất TrippaD</h3>
+          <p>Địa chỉ: 73/110 Trần Duy Hưng, Cầu Giấy, Hà Nội</p>
+        </div>
+        <div>
+          <p>&copy; 2025 Nội Thất TrippaD</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    const STORAGE_KEY = 'newsPosts_v1';
+
+    function loadPosts() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : [];
+    }
+
+    function renderDetail() {
+      const posts = loadPosts();
+      const post = posts[id];
+      if (!post) {
+        document.getElementById('newsDetail').innerHTML = `<p class='muted'>Không tìm thấy bài viết.</p>`;
+        return;
+      }
+      document.getElementById('detailTitle').textContent = post.title;
+      document.getElementById('detailImg').src = post.image || 'imgs/promo-sample.jpg';
+      document.getElementById('detailMeta').textContent = `${post.type} • ${new Date(post.date).toLocaleDateString()}`;
+      document.getElementById('detailContent').textContent = post.desc;
+    }
+
+    renderDetail();
+  </script>
+  <script src="script.js"></script>
+
+  <div class="floating-contact">
+    <div class="contact-icons" id="contactIcons">
+      <a href="https://zalo.me/your-zalo-number" class="contact-icon zalo" data-tooltip="Chat Zalo" target="_blank">
+        <span>Z</span>
+      </a>
+      <a href="https://m.me/your-messenger-id" class="contact-icon messenger" data-tooltip="Messenger" target="_blank">
+        <span>M</span>
+      </a>
+      <a href="tel:your-phone-number" class="contact-icon phone" data-tooltip="Gọi ngay">
+        <span>📞</span>
+      </a>
+    </div>
+    <button class="contact-trigger" id="contactTrigger">
+      <span>💬</span>
+    </button>
+  </div>
+</body>
+
+</html>

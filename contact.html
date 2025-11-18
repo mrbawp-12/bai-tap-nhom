@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="description" content="Liên hệ Nội Thất TrippaD - Gửi phản hồi và nhận tư vấn nội thất chuyên nghiệp">
+  <link rel="icon" href="imgs/favicon.png" type="image/png">
+  <title>Liên hệ - Nội Thất TrippaD</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="main-wrapper">
+    <!-- Header -->
+    <header class="site-header">
+      <div class="brand">
+        <a href="index.html" style="text-decoration: none; color: inherit;">
+          <h1>Nội Thất TrippaD</h1>
+        </a>
+        <p class="tagline">Liên hệ & Hỗ trợ khách hàng</p>
+      </div>
+      <div class="header-right">
+        <a href="index.html" class="btn">⟵ Trang chủ</a>
+      </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">🏢 Thương hiệu ▾</a>
+          <div class="dropdown-content">
+            <a href="about.html">🎯 Tổng quan công ty</a>
+            <a href="about.html#reasons">💡 Lý do chọn chúng tôi</a>
+            <a href="about.html#partners">🤝 Đối tác & Khách hàng</a>
+            <a href="about.html#development">🚀 Hành trình phát triển</a>
+          </div>
+        </li>
+        <li><a href="news.html">Tin tức</a></li>
+        <li><a href="contact.html" class="active">Liên hệ</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="content-wrap" style="max-width:1000px;margin:auto;padding:2rem;">
+      <section>
+        <h2>Gửi thông tin liên hệ</h2>
+        <p>Hãy để lại thông tin, chúng tôi sẽ liên hệ tư vấn cho bạn trong thời gian sớm nhất.</p>
+
+        <form id="contactForm" style="display:flex;flex-direction:column;gap:1rem;margin-top:1rem;">
+          <div style="display:flex;flex-wrap:wrap;gap:1rem;">
+            <input type="text" id="name" placeholder="Họ và tên" required style="flex:1;min-width:250px;">
+            <input type="email" id="email" placeholder="Email" required style="flex:1;min-width:250px;">
+          </div>
+          <input type="text" id="subject" placeholder="Chủ đề" required>
+          <textarea id="message" rows="5" placeholder="Nội dung liên hệ..." required></textarea>
+          <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Gửi liên hệ</button>
+        </form>
+        <p id="formMsg" class="muted" style="margin-top:1rem;"></p>
+      </section>
+
+      <section style="margin-top:3rem;">
+        <h2>Địa chỉ & Bản đồ</h2>
+        <p>Showroom: 73/110 Trần Duy Hưng, Cầu Giấy, Hà Nội</p>
+        <div style="margin-top:1rem; border-radius:10px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.628635802674!2d105.80097741501968!3d21.007903993895867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab5a8ad6cfcb%3A0x4cf89df7c68cbe9b!2zVHLGsOG7nW5nIMSQ4buTbmcgVOG7pSBUaOG7iyBUaOG7p3QgSMOyYSBO4buZaSBUaOG6rXQgTGluaCBExrDGoW5n!5e0!3m2!1svi!2s!4v1681547936192!5m2!1svi!2s"
+            width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </section>
+
+      <section style="margin-top:3rem;">
+        <h2>Thông tin liên hệ</h2>
+        <div
+          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 1.5rem;">
+          <div
+            style="background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--shadow); text-align: center;">
+            <div style="font-size: 2.5rem; margin-bottom: 1rem;">📞</div>
+            <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Hotline</h3>
+            <p style="font-size: 1.2rem; font-weight: 600; color: var(--text-dark);">0904 123 456</p>
+            <p style="color: var(--text-light); margin-top: 0.5rem;">24/7 hỗ trợ khách hàng</p>
+          </div>
+
+          <div
+            style="background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--shadow); text-align: center;">
+            <div style="font-size: 2.5rem; margin-bottom: 1rem;">📧</div>
+            <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Email</h3>
+            <p style="font-size: 1.1rem; font-weight: 600; color: var(--text-dark);">info@noithatTrippaD.vn</p>
+            <p style="color: var(--text-light); margin-top: 0.5rem;">Phản hồi trong 24h</p>
+          </div>
+
+          <div
+            style="background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--shadow); text-align: center;">
+            <div style="font-size: 2.5rem; margin-bottom: 1rem;">🕒</div>
+            <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Giờ làm việc</h3>
+            <p style="font-size: 1.1rem; font-weight: 600; color: var(--text-dark);">8:00 - 22:00</p>
+            <p style="color: var(--text-light); margin-top: 0.5rem;">Tất cả các ngày trong tuần</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div>
+          <h3>Nội Thất TrippaD</h3>
+          <p>Địa chỉ: 73/110 Trần Duy Hưng, Cầu Giấy, Hà Nội</p>
+          <div class="contact-info" style="margin-top: 1rem;">
+            <p class="phone">📞 Hotline: 0904 123 456</p>
+            <p>📧 Email: info@noithatducthang.vn</p>
+          </div>
+        </div>
+        <div>
+          <h3>Liên kết</h3>
+          <p><a href="index.html">Trang chủ</a></p>
+          <p><a href="about.html">Giới thiệu</a></p>
+          <p><a href="news.html">Tin tức</a></p>
+        </div>
+        <div>
+          <h3>Hỗ trợ</h3>
+          <p><a href="contact.html">Liên hệ</a></p>
+          <p><a href="#">Chính sách bảo hành</a></p>
+          <p><a href="#">Hướng dẫn mua hàng</a></p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const msg = document.getElementById('formMsg');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !subject || !message) {
+        msg.textContent = 'Vui lòng điền đầy đủ thông tin!';
+        msg.style.color = '#dc2626';
+        return;
+      }
+
+      // Hiển thị thông báo thành công
+      msg.textContent = 'Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất.';
+      msg.style.color = '#2A5B3D';
+
+      // Reset form
+      form.reset();
+
+      // Ẩn thông báo sau 5 giây
+      setTimeout(() => {
+        msg.textContent = '';
+      }, 5000);
+    });
+
+    // Thêm hiệu ứng cho các card thông tin
+    document.addEventListener('DOMContentLoaded', () => {
+      const infoCards = document.querySelectorAll('.content-wrap > section > div > div');
+      infoCards.forEach(card => {
+        card.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+        card.addEventListener('mouseenter', () => {
+          card.style.transform = 'translateY(-5px)';
+          card.style.boxShadow = '0 10px 30px rgba(0,0,0,0.15)';
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'translateY(0)';
+          card.style.boxShadow = 'var(--shadow)';
+        });
+      });
+    });
+  </script>
+  <script src="script.js"></script>
+
+  <div class="floating-contact">
+    <div class="contact-icons" id="contactIcons">
+      <a href="https://zalo.me/your-zalo-number" class="contact-icon zalo" data-tooltip="Chat Zalo" target="_blank">
+        <span>Z</span>
+      </a>
+      <a href="https://m.me/your-messenger-id" class="contact-icon messenger" data-tooltip="Messenger" target="_blank">
+        <span>M</span>
+      </a>
+      <a href="tel:your-phone-number" class="contact-icon phone" data-tooltip="Gọi ngay">
+        <span>📞</span>
+      </a>
+    </div>
+    <button class="contact-trigger" id="contactTrigger">
+      <span>💬</span>
+    </button>
+  </div>
+</body>
+
+</html>

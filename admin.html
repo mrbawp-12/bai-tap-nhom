@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Bảng điều khiển quản trị tin tức - Nội Thất TrippaD">
+  <link rel="icon" href="imgs/favicon.png" type="image/png">
+  <title>Admin - Quản lý Tin tức | Nội Thất TrippaD</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="main-wrapper">
+    <header class="site-header">
+      <div class="brand">
+        <a href="index.html" style="text-decoration: none; color: inherit;">
+          <h1>Nội Thất TrippaD</h1>
+        </a>
+        <p class="tagline">Quản trị tin tức</p>
+      </div>
+      <div class="header-right">
+        <a href="index.html" class="btn">⟵ Trang chủ</a>
+      </div>
+    </header>
+
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">🏢 Thương hiệu ▾</a>
+          <div class="dropdown-content">
+            <a href="about.html">🎯 Tổng quan công ty</a>
+            <a href="about.html#reasons">💡 Lý do chọn chúng tôi</a>
+            <a href="about.html#partners">🤝 Đối tác & Khách hàng</a>
+            <a href="about.html#development">🚀 Hành trình phát triển</a>
+          </div>
+        </li>
+        <li><a href="news.html">Tin tức</a></li>
+        <li><a href="contact.html">Liên hệ</a></li>
+      </ul>
+    </nav>
+
+    <main class="admin-wrap">
+      <div class="admin-top">
+        <div style="flex:1; min-width:300px;">
+          <div class="card-form" id="formCard">
+            <h3>Thêm / Sửa tin tức</h3>
+            <div class="form-row">
+              <input id="titleInput" type="text" placeholder="Tiêu đề (vd: Ưu đãi mùa hè: Giảm 20%)">
+              <select id="typeSelect">
+                <option value="Khuyến mãi">Khuyến mãi</option>
+                <option value="Tuyển dụng">Tuyển dụng</option>
+                <option value="Hoạt động công ty">Hoạt động công ty</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <input id="imageInput" type="text" placeholder="URL ảnh (hoặc imgs/banner1.jpg)">
+              <select id="sampleImgs">
+                <option value="">— Chọn ảnh mẫu —</option>
+                <option value="imgs/promo-sample.jpg">promo-sample.jpg</option>
+                <option value="imgs/recruit-sample.jpg">recruit-sample.jpg</option>
+                <option value="imgs/event-sample.jpg">event-sample.jpg</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <textarea id="descInput" placeholder="Mô tả ngắn"></textarea>
+            </div>
+            <div class="form-row admin-actions">
+              <button id="addBtn" class="btn btn-primary">Thêm tin</button>
+              <button id="updateBtn" class="btn" style="display:none;">Cập nhật</button>
+              <button id="clearForm" class="btn">Xóa form</button>
+              <div class="muted" style="margin-left:auto">Bài hiện có: <span id="countSpan">0</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="width:320px; min-width:260px;">
+          <div class="card-form">
+            <h4>Công cụ nhanh</h4>
+            <p class="small">Bạn có thể xóa từng tin, hoặc xóa tất cả để reset.</p>
+            <div style="display:flex;gap:0.6rem;">
+              <button id="deleteAllBtn" class="btn btn-danger">Xóa tất cả tin</button>
+              <button id="seedBtn" class="btn">Tạo mẫu nhanh</button>
+            </div>
+            <p class="muted" style="margin-top:0.8rem;">Dữ liệu lưu tại localStorage (key: <code>newsPosts_v1</code>).
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <section>
+        <h3>Danh sách tin</h3>
+        <div class="news-grid" id="cardsWrap"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div>
+          <h3>Nội Thất TrippaD</h3>
+          <p>Địa chỉ: 73/110 Trần Duy Hưng, Cầu Giấy, Hà Nội</p>
+        </div>
+        <div>
+          <p>&copy; 2025 Nội Thất TrippaD</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'newsPosts_v1';
+    const cardsWrap = document.getElementById('cardsWrap');
+    const countSpan = document.getElementById('countSpan');
+    const titleInput = document.getElementById('titleInput');
+    const typeSelect = document.getElementById('typeSelect');
+    const imageInput = document.getElementById('imageInput');
+    const descInput = document.getElementById('descInput');
+    const sampleImgs = document.getElementById('sampleImgs');
+    const addBtn = document.getElementById('addBtn');
+    const updateBtn = document.getElementById('updateBtn');
+    const clearForm = document.getElementById('clearForm');
+    const deleteAllBtn = document.getElementById('deleteAllBtn');
+    const seedBtn = document.getElementById('seedBtn');
+
+    let editingIndex = null;
+
+    function loadPosts() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : [];
+    }
+
+    function savePosts(data) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+
+    function renderPosts() {
+      const posts = loadPosts();
+      cardsWrap.innerHTML = '';
+      countSpan.textContent = posts.length;
+      posts.forEach((p, i) => {
+        const card = document.createElement('div');
+        card.className = 'news-card';
+        card.innerHTML = `
+          <img src="${p.image || 'imgs/promo-sample.jpg'}" alt="${escapeHtml(p.title)}">
+          <h3>${escapeHtml(p.title)}</h3>
+          <p>${escapeHtml(p.desc)}</p>
+          <div class='muted'>${escapeHtml(p.type)} • ${new Date(p.date).toLocaleDateString()}</div>
+          <div class='card-actions'>
+            <button class='btn' onclick='editPost(${i})'>Sửa</button>
+            <button class='btn btn-danger' onclick='deletePost(${i})'>Xóa</button>
+          </div>`;
+        cardsWrap.appendChild(card);
+      });
+    }
+
+    function addPost() {
+      const title = titleInput.value.trim();
+      const desc = descInput.value.trim();
+      const type = typeSelect.value;
+      const image = imageInput.value.trim();
+      if (!title || !desc) return alert('Vui lòng nhập đủ tiêu đề và mô tả.');
+
+      const posts = loadPosts();
+      const newPost = { title, desc, type, image, date: new Date().toISOString() };
+      posts.push(newPost);
+      savePosts(posts);
+      clearInputs();
+      renderPosts();
+    }
+
+    function deletePost(i) {
+      if (!confirm('Xóa tin này?')) return;
+      const posts = loadPosts();
+      posts.splice(i, 1);
+      savePosts(posts);
+      renderPosts();
+    }
+
+    function editPost(i) {
+      const posts = loadPosts();
+      const p = posts[i];
+      titleInput.value = p.title;
+      descInput.value = p.desc;
+      typeSelect.value = p.type;
+      imageInput.value = p.image;
+      editingIndex = i;
+      addBtn.style.display = 'none';
+      updateBtn.style.display = 'inline-block';
+    }
+
+    function updatePost() {
+      if (editingIndex === null) return;
+      const posts = loadPosts();
+      posts[editingIndex] = {
+        title: titleInput.value.trim(),
+        desc: descInput.value.trim(),
+        type: typeSelect.value,
+        image: imageInput.value.trim(),
+        date: new Date().toISOString()
+      };
+      savePosts(posts);
+      editingIndex = null;
+      addBtn.style.display = 'inline-block';
+      updateBtn.style.display = 'none';
+      clearInputs();
+      renderPosts();
+    }
+
+    function clearInputs() {
+      titleInput.value = '';
+      descInput.value = '';
+      imageInput.value = '';
+      typeSelect.value = 'Khuyến mãi';
+    }
+
+    function deleteAll() {
+      if (!confirm('Xóa toàn bộ tin?')) return;
+      localStorage.removeItem(STORAGE_KEY);
+      renderPosts();
+    }
+
+    function seedSample() {
+      const demo = [
+        { title: 'Khai trương showroom mới tại Cầu Giấy', desc: 'Ưu đãi 20% toàn bộ sản phẩm trong tuần lễ khai trương.', type: 'Khuyến mãi', image: 'imgs/promo-sample.jpg', date: new Date().toISOString() },
+        { title: 'Tuyển dụng nhân viên thiết kế nội thất', desc: 'Cơ hội làm việc trong môi trường năng động và sáng tạo.', type: 'Tuyển dụng', image: 'imgs/recruit-sample.jpg', date: new Date().toISOString() }
+      ];
+      savePosts(demo);
+      renderPosts();
+    }
+
+    function escapeHtml(s) {
+      if (!s) return ''; return s.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+    }
+
+    addBtn.addEventListener('click', addPost);
+    updateBtn.addEventListener('click', updatePost);
+    clearForm.addEventListener('click', clearInputs);
+    deleteAllBtn.addEventListener('click', deleteAll);
+    seedBtn.addEventListener('click', seedSample);
+    sampleImgs.addEventListener('change', e => imageInput.value = e.target.value);
+
+    renderPosts();
+  </script>
+  <script src="script.js"></script>
+
+  <div class="floating-contact">
+    <div class="contact-icons" id="contactIcons">
+      <a href="https://zalo.me/your-zalo-number" class="contact-icon zalo" data-tooltip="Chat Zalo" target="_blank">
+        <span>Z</span>
+      </a>
+      <a href="https://m.me/your-messenger-id" class="contact-icon messenger" data-tooltip="Messenger" target="_blank">
+        <span>M</span>
+      </a>
+      <a href="tel:your-phone-number" class="contact-icon phone" data-tooltip="Gọi ngay">
+        <span>📞</span>
+      </a>
+    </div>
+    <button class="contact-trigger" id="contactTrigger">
+      <span>💬</span>
+    </button>
+  </div>
+</body>
+
+</html>
