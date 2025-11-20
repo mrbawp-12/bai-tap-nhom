@@ -64,12 +64,31 @@
     <section class="hero">
       <div class="slider" id="slider">
         <div class="slides">
-          <div class="slide"><img src="imgs/sofa-hien-dai-hns105-1.jpg" alt="Sofa hiện đại - Nội Thất TrippaD"></div>
-          <div class="slide"><img src="imgs/ban-ghe-phong-khach-hien-dai23232332_7.jpg" alt="Bộ bàn ghế phòng khách"></div>
-          <div class="slide"><img src="imgs/TQA15.jpg" alt="Tủ quần áo hiện đại"></div>
-          <div class="slide"><img src="imgs/43_b18264c0d7324733940ab72387b35b94_grande.jpg" alt="Giường đơn gỗ hương"></div>
-          <div class="slide"><img src="imgs/Ke-sach-go-soi-da-nang-kieu-don-gian1.jpg" alt="Kệ sách gỗ sồi"></div>
-
+          <div class="slide">
+            <div class="slide-image-container">
+              <img src="imgs/sofa-hien-dai-hns105-1.jpg" alt="Sofa hiện đại - Nội Thất TrippaD">
+            </div>
+          </div>
+          <div class="slide">
+            <div class="slide-image-container">
+              <img src="imgs/ban-ghe-phong-khach-hien-dai23232332_7.jpg" alt="Bộ bàn ghế phòng khách">
+            </div>
+          </div>
+          <div class="slide">
+            <div class="slide-image-container">
+              <img src="imgs/TQA15.jpg" alt="Tủ quần áo hiện đại">
+            </div>
+          </div>
+          <div class="slide">
+            <div class="slide-image-container">
+              <img src="imgs/43_b18264c0d7324733940ab72387b35b94_grande.jpg" alt="Giường đơn gỗ hương">
+            </div>
+          </div>
+          <div class="slide">
+            <div class="slide-image-container">
+              <img src="imgs/Ke-sach-go-soi-da-nang-kieu-don-gian1.jpg" alt="Kệ sách gỗ sồi">
+            </div>
+          </div>
         </div>
         <button class="prev" id="prevBtn" aria-label="Prev">⟵</button>
         <button class="next" id="nextBtn" aria-label="Next">⟶</button>
@@ -324,7 +343,9 @@
 
           <!-- Edit profile buttons (inline header) -->
           <div style="margin-left: auto; display:flex; gap:0.5rem; align-items:center;">
-            <button id="editProfileBtnInline" class="btn" title="Chỉnh sửa hồ sơ" style="background: rgba(255,255,255,0.12); color: white; border: 1px solid rgba(255,255,255,0.2);">✏️ Chỉnh sửa</button>
+            <button id="editProfileBtnInline" class="btn" title="Chỉnh sửa hồ sơ"
+              style="background: rgba(255,255,255,0.12); color: white; border: 1px solid rgba(255,255,255,0.2);">✏️
+              Chỉnh sửa</button>
             <button id="logoutBtn" class="btn"
               style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3);">Đăng
               xuất</button>
@@ -417,8 +438,11 @@
         <h3>Chỉnh sửa hồ sơ</h3>
         <div style="display:flex; gap:1.5rem; align-items:flex-start; margin-top:1rem;">
           <div style="width:140px; text-align:center;">
-            <div id="editAvatarPreviewFallback" style="width:120px; height:120px; border-radius:50%; background:#f3f3f3; display:flex; align-items:center; justify-content:center; color:#666; font-size:32px; margin:0 auto;">👤</div>
-            <img id="editAvatarPreview" src="" alt="avatar preview" style="width:120px; height:120px; border-radius:50%; display:none; object-fit:cover; margin:0 auto;">
+            <div id="editAvatarPreviewFallback"
+              style="width:120px; height:120px; border-radius:50%; background:#f3f3f3; display:flex; align-items:center; justify-content:center; color:#666; font-size:32px; margin:0 auto;">
+              👤</div>
+            <img id="editAvatarPreview" src="" alt="avatar preview"
+              style="width:120px; height:120px; border-radius:50%; display:none; object-fit:cover; margin:0 auto;">
             <div style="margin-top:0.5rem;">
               <input id="editAvatarFile" type="file" accept="image/*">
             </div>
@@ -429,8 +453,10 @@
 
           <div style="flex:1;">
             <label style="font-weight:600;">Tên hiển thị</label>
-            <input id="editDisplayName" type="text" placeholder="Tên hiển thị" style="width:100%; padding:0.5rem; margin-top:0.5rem;">
-            <p style="color:#666; margin-top:0.5rem; font-size:0.9rem;">Bạn có thể thay đổi tên hiển thị và ảnh đại diện ở đây.</p>
+            <input id="editDisplayName" type="text" placeholder="Tên hiển thị"
+              style="width:100%; padding:0.5rem; margin-top:0.5rem;">
+            <p style="color:#666; margin-top:0.5rem; font-size:0.9rem;">Bạn có thể thay đổi tên hiển thị và ảnh đại diện
+              ở đây.</p>
 
             <div style="margin-top:1rem; display:flex; gap:0.5rem;">
               <button id="saveProfileBtn" class="btn btn-primary">Lưu</button>
@@ -471,7 +497,7 @@
         <button id="closeOrderDetailsBtn" class="btn">Đóng</button>
       </div>
     </div>
-  </div>  
+  </div>
 
   <!-- Thêm các section mới -->
 
@@ -510,7 +536,7 @@
           </p>
           <div class="testimonial-author">
             <div class="author-avatar">CA</div>
-            <div> 
+            <div>
               <div style="font-weight: 600;">Chị Anh</div>
               <div style="color: var(--text-light); font-size: 0.9rem;">Khách hàng thân thiết</div>
             </div>
@@ -548,7 +574,7 @@
       </div>
     </div>
   </footer>
-  
+
   <!-- Chat Widget -->
   <div id="chatWidget" class="chat-widget">
     <div class="chat-header" id="chatHeader">
